@@ -1,0 +1,28 @@
+{% extends 'myproject/base.html' %}
+
+{% block navbar %}
+{% with current_nav='profile' %}
+{{ block.super }}
+{% endwith %}
+{% endblock navbar%}
+
+{% block title %}{{ block.super }} - Profil{% endblock title %}
+
+{% block content %}
+<div class="py-3"></div>
+<div id="home-header" class="px-2">
+  <h1 class="display-4 p-3 text-info">Profil</h1>
+</div>
+<div id="profile-table" class="table-responsive mw-75 mt-4 mx-auto">
+  <table class="table table-hover">
+    <tbody>
+      {% for key, value in profile.items %}
+        <tr>
+          <th>{{ key }}</th>
+            <td>{{ value }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

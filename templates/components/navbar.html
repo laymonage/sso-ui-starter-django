@@ -1,0 +1,21 @@
+<a class="navbar-brand" href="{% url 'index' %}">myproject</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse order-1 order-md-0 dual-collapse" id="collapsibleNavbar">
+  {% block navbar_contents %}
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item mx-2">
+      <a class="nav-link{% if current_nav == 'home' %} font-weight-bold text-light{% endif %}" href="{% url 'sso_ui:home' %}">Beranda</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item mx-2">
+      <a class="nav-link{% if current_nav == 'profile' %} font-weight-bold text-light{% endif %}" href="{% url 'sso_ui:profile' %}">Profil</a>
+    </li>
+    {% endif %}
+    <li class="nav-item mx-2">
+      <a class="nav-link" href="https://github.com/laymonage/sso-ui-starter-django">Repo GitHub</a>
+    </li>
+  </ul>
+  {% endblock navbar_contents%}
+</div>

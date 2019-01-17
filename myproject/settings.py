@@ -109,14 +109,14 @@ AUTHENTICATION_BACKENDS = (
 
 # Django CAS-NG configuration
 
-CAS_SERVER_URL = os.getenv("CAS_SERVER_URL", 'https://account.example.com/cas/')
+CAS_SERVER_URL = os.getenv("CAS_SERVER_URL", 'https://sso.ui.ac.id/cas2/')
 CAS_LOGIN_URL_NAME = 'sso_ui:login'
 CAS_FORCE_CHANGE_USERNAME_CASE = 'lower'
 
 
 # SSO-UI configuration
 
-SSO_UI_ORG_DETAIL_FILE_PATH = "sso_ui/static/kodoru.json"
+SSO_UI_ORG_DETAIL_FILE_PATH = "sso_ui/static/sso_ui/kodoru.json"
 SSO_UI_ORG_DETAIL_LANG = "id"
 
 

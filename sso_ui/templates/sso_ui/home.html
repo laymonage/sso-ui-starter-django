@@ -1,0 +1,27 @@
+{% extends 'myproject/base.html'%}
+
+{% block navbar %}
+{% with current_nav='home' %}
+{{ block.super }}
+{% endwith %}
+{% endblock navbar%}
+
+{% block main_container %}
+  {% with vertical_center=True %}
+    {{ block.super }}
+  {% endwith %}
+{% endblock main_container %}
+
+{% block title %}{{ block.super }} - Beranda{% endblock title %}
+
+{% block content %}
+<div id="home-header">
+  <h1 class="display-3 text-center font-weight-bold m-auto">
+    {% if not user.is_authenticated %}
+    <a href="{% url 'sso_ui:login' %}" class="no-deco text-primary">Masuk dengan SSO UI</a>
+    {% else %}
+    <a href="{% url 'sso_ui:logout' %}" class="no-deco text-primary">Keluar dari SSO UI</a>
+    {% endif %}
+  </h1>
+</div>
+{% endblock content %}

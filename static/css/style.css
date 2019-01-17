@@ -1,0 +1,24 @@
+/*
+ * Globals
+ */
+
+html, body {
+    height: 100%;
+    padding-top: 50px;
+}
+
+/* Layouts */
+
+.mw-75 {
+    max-width: 75%;
+}
+
+/* Fonts */
+
+.font-weight-medium {
+  font-weight: 500 !important;
+}
+
+.no-deco {
+  text-decoration: none !important;
+}
