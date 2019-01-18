@@ -37,14 +37,15 @@ def create_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
 
 
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
 @receiver(cas_user_authenticated)
-def save_user_profile(sender, user, created, attributes, **kwargs):
-    try:
-        user.profile.save()
-    except Profile.DoesNotExist:
-        profile = Profile.objects.create(user=user)
-    else:
-        profile = user.profile
+def save_user_attributes(sender, user, created, attributes, **kwargs):
+    user.save()
+    profile = user.profile
     profile.role = attributes['peran_user']
     profile.npm = attributes['npm']
     if profile.role == 'mahasiswa':
@@ -61,5 +62,4 @@ def save_user_profile(sender, user, created, attributes, **kwargs):
     profile.study_program = record['study_program']
     profile.educational_program = record['educational_program']
 
-    user.profile.save()
     user.save()
