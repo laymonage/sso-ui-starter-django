@@ -12,6 +12,7 @@ from .models import ORG_CODE
 
 class SSOUITest(TestCase):
     """Test SSO UI app."""
+
     ATTRIBUTES = {
         "nama": "Ice Bear",
         "peran_user": "mahasiswa",
@@ -20,7 +21,7 @@ class SSOUITest(TestCase):
     }
 
     def setUp(self):
-        """Setup test."""
+        """Set up test."""
         self.user = User.objects.create_superuser(
             username='username', password='password', email='username@test.com'
         )

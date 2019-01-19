@@ -16,6 +16,7 @@ with open(settings.SSO_UI_ORG_DETAIL_FILE_PATH, 'r') as ORG_CODE_FILE:
 
 class Profile(models.Model):
     """User Profile model."""
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     org_code = models.CharField('kode organisasi', max_length=11, blank=True)
     role = models.CharField('peran pengguna', max_length=128, blank=True)
@@ -29,6 +30,7 @@ class Profile(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
+        """Return username of the user."""
         return self.user.username
 
 
