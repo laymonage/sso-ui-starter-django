@@ -1,13 +1,16 @@
+"""SSO UI views module."""
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 
 def home(request):
+    """Render home page."""
     return render(request, "sso_ui/home.html")
 
 
 @login_required(login_url='sso_ui:login')
 def profile(request):
+    """Render profile page."""
     context = {
         "profile": {
             "Nama lengkap": request.user.get_full_name(),

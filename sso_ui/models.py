@@ -1,3 +1,4 @@
+"""SSO UI models module."""
 import json
 
 from django.conf import settings
@@ -14,6 +15,7 @@ with open(settings.SSO_UI_ORG_DETAIL_FILE_PATH, 'r') as ORG_CODE_FILE:
 
 
 class Profile(models.Model):
+    """User Profile model."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     org_code = models.CharField('kode organisasi', max_length=11, blank=True)
     role = models.CharField('peran pengguna', max_length=128, blank=True)
@@ -31,18 +33,21 @@ class Profile(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_profile(instance, created, **kwargs):
+    """Create user profile if user object was just created."""
     if created:
         Profile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
+def save_user_profile(instance, **kwargs):
+    """Save user profile post user save."""
     instance.profile.save()
 
 
 @receiver(cas_user_authenticated)
-def save_user_attributes(sender, user, created, attributes, **kwargs):
+def save_user_attributes(user, attributes, **kwargs):
+    """Save user attributes from CAS into user and profile objects."""
     user.save()
     profile = user.profile
     profile.role = attributes['peran_user']
