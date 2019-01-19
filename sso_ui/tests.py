@@ -1,12 +1,12 @@
+import json
+
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.urls import reverse
 from django.test import TestCase
+from django.urls import reverse
 from django_cas_ng.signals import cas_user_authenticated
 
 from .models import ORG_CODE, Profile
-
-import json
 
 
 class SSOUITest(TestCase):

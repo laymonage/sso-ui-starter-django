@@ -1,5 +1,6 @@
 from django.urls import path
 from django_cas_ng import views as cas_views
+
 from . import views
 
 app_name = 'sso_ui'
