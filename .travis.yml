@@ -8,6 +8,8 @@ install:
 jobs:
   include:
     - stage: test
+      before_script:
+          - python manage.py collectstatic --noinput
       script:
           - coverage run --include=sso_ui/* manage.py test
           - coverage report -m
