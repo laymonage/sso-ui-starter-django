@@ -24,3 +24,5 @@ jobs:
         provider: heroku
         app: $HEROKU_APP_NAME
         api_key: $HEROKU_API_KEY
+        run:
+          - python manage.py migrate
