@@ -8,7 +8,7 @@ coverage = "==4.5.2"
 pylint = "==2.2.2"
 
 [packages]
-django = "==2.2"
+django = ">=2.2.2"
 django-cas-ng = "==3.6.0"
 pylint-django = "==2.0.5"
 isort = "==4.3.4"
